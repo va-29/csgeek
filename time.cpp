@@ -45,7 +45,28 @@ class Time
             cout<<setw(2)<<setfill('0')<<seconds;   
             }
 };
-
+Time temp;
+Time& operator+(Time& a,Time& b)
+{
+    int hours,minutes,seconds;
+    hours=a.getHours()+b.getHours();
+    minutes=a.getMinutes()+b.getMinutes();
+    seconds=a.getSeconds()+b.getSeconds();
+    if(seconds>=60)
+    {
+        minutes=minutes+1;
+        seconds=seconds-60;
+    }
+    if(minutes>=60)
+    {
+        hours=hours+1;
+        minutes=minutes-60;
+    }
+    temp.setHours(hours);
+    temp.setMinutes(minutes);
+    temp.setSeconds(seconds);
+    return temp;
+}
 int main()
 {
        Time t,t1,t2;
